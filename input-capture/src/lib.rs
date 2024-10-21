@@ -310,10 +310,10 @@ async fn create(
     }
 
     for backend in [
-        #[cfg(all(unix, feature = "libei", not(target_os = "macos")))]
-        Backend::InputCapturePortal,
         #[cfg(all(unix, feature = "wayland", not(target_os = "macos")))]
         Backend::LayerShell,
+        #[cfg(all(unix, feature = "libei", not(target_os = "macos")))]
+        Backend::InputCapturePortal,
         #[cfg(all(unix, feature = "x11", not(target_os = "macos")))]
         Backend::X11,
         #[cfg(windows)]
